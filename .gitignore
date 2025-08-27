@@ -32,3 +32,5 @@ Thumbs.db
 
 # Drivers
 drivers/
+allure_result/
+allure_reports/
