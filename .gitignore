@@ -9,6 +9,6 @@ venv/
 allure_results/
 *.log
 .geckodriver.log
-.DS_Storeallure_results/
-drivers/
+.DS_Store
+allure-report/
 drivers/
