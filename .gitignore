@@ -1,13 +1,34 @@
+# Python
 __pycache__/
 *.pyc
 *.pyo
 *.pyd
-.Python
-env/
-venv/
+.python-version
+
+# Virtual environments
+.env/
 .venv/
+venv/
+env/
+
+# IDE
+.idea/
+.vscode/
+*.swp
+*.swo
+
+# Allure
+allure-report/
+allure-results/
+allure_results/
+
+# Logs
 *.log
 .geckodriver.log
-.DS_Storeallure_results/
+
+# System
+.DS_Store
+Thumbs.db
+
+# Drivers
 drivers/
-drivers/.idea/
