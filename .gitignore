@@ -1,1 +1,13 @@
-обновление
+__pycache__/
+*.pyc
+*.pyo
+*.pyd
+.Python
+env/
+venv/
+.venv/
+allure_results/
+*.log
+.geckodriver.log
+.DS_Storeallure_results/
+.allure/
