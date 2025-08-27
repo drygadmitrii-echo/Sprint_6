@@ -10,4 +10,4 @@ venv/
 .geckodriver.log
 .DS_Storeallure_results/
 drivers/
-drivers/
+drivers/.idea/
