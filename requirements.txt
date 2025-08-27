@@ -1,1 +1,3 @@
-обновление
+selenium==4.15.2
+allure-pytest==2.13.2
+pytest==7.4.3
