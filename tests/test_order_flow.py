@@ -1,65 +1,65 @@
 import pytest
 import allure
-from selenium.webdriver.common.by import By
-from selenium.webdriver.support.ui import WebDriverWait
-from selenium.webdriver.support import expected_conditions as EC
 from pages.main_page import MainPage
 from pages.order_page import OrderPage
 from helpers.data import User1, User2
 
 
 class TestOrderFlow:
-    test_data = [
-        ("header", User1),
-        ("footer", User2)
-    ]
-
-    @allure.feature("Тесты процесса заказа")
-    @pytest.mark.parametrize("order_button,user", test_data)
-    def test_order_flow(self, driver, order_button, user):
+    @allure.feature("Тесты процесса заказа через хедер")
+    def test_order_flow_header(self, driver):
         main_page = MainPage(driver)
         order_page = OrderPage(driver)
 
         main_page.go_to_site()
         main_page.accept_cookies()
+        main_page.click_order_button_header()
 
-        # Выбор точки входа
-        if order_button == "header":
-            main_page.click_order_button_header()
-        else:
-            main_page.click_order_button_footer()
-
-        # Ожидаем загрузки первой страницы формы
-        WebDriverWait(driver, 10).until(
-            EC.visibility_of_element_located((By.XPATH, "//input[@placeholder='* Имя']"))
-        )
-
-        # Заполнение форм
         order_page.fill_first_page(
-            user.NAME,
-            user.LAST_NAME,
-            user.ADDRESS,
-            user.METRO_STATION,
-            user.PHONE
-        )
-
-        # Ожидаем загрузки второй страницы формы
-        WebDriverWait(driver, 10).until(
-            EC.visibility_of_element_located((By.XPATH, "//input[@placeholder='* Когда привезти самокат']"))
+            User1.NAME,
+            User1.LAST_NAME,
+            User1.ADDRESS,
+            User1.METRO_STATION,
+            User1.PHONE
         )
 
         order_page.fill_second_page(
-            user.DATE,
-            user.RENTAL_PERIOD,
-            user.COLOR,
-            user.COMMENT
+            User1.DATE,
+            User1.RENTAL_PERIOD,
+            User1.COLOR,
+            User1.COMMENT
         )
 
         order_page.confirm_order()
 
-        # Проверка успешного заказа
-        WebDriverWait(driver, 10).until(
-            EC.visibility_of_element_located((By.XPATH, "//div[contains(@class, 'Order_ModalHeader')]"))
+        success_message = order_page.get_success_message()
+        assert "Заказ оформлен" in success_message
+
+    @allure.feature("Тесты процесса заказа через футер")
+    def test_order_flow_footer(self, driver):
+        main_page = MainPage(driver)
+        order_page = OrderPage(driver)
+
+        main_page.go_to_site()
+        main_page.accept_cookies()
+        main_page.click_order_button_footer()
+
+        order_page.fill_first_page(
+            User2.NAME,
+            User2.LAST_NAME,
+            User2.ADDRESS,
+            User2.METRO_STATION,
+            User2.PHONE
         )
+
+        order_page.fill_second_page(
+            User2.DATE,
+            User2.RENTAL_PERIOD,
+            User2.COLOR,
+            User2.COMMENT
+        )
+
+        order_page.confirm_order()
+
         success_message = order_page.get_success_message()
         assert "Заказ оформлен" in success_message
