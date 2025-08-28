@@ -1,9 +1,4 @@
-class Urls:
-    MAIN_PAGE = "https://qa-scooter.praktikum-services.ru/"
-    ORDER_PAGE = "https://qa-scooter.praktikum-services.ru/order"
-    TRACK_PAGE_1 = "https://qa-scooter.praktikum-services.ru/track?t=367433"
-    TRACK_PAGE_2 = "https://qa-scooter.praktikum-services.ru/track?t=71295"
-
+from helpers.urls import Urls
 
 class Questions:
     EXPECTED_ANSWERS = [
@@ -22,23 +17,21 @@ class User1:
     NAME = "Сергей"
     LAST_NAME = "Граф"
     ADDRESS = "Москва, Улица Дмитрия Ульянова, 3"
-    METRO_STATION = 0  # Водный Стадион
+    METRO_STATION = 0
     PHONE = "89808800880"
     DATE = "28.08.2025"
-    RENTAL_PERIOD = 1  # Двое суток
+    RENTAL_PERIOD = 1
     COLOR = "black"
     COMMENT = "Хочу покататься!"
-    ORDER_NUMBER = "367433"
 
 
 class User2:
     NAME = "Дмитрий"
     LAST_NAME = "Шмидт"
     ADDRESS = "Москва, Улица Винокурова, 3"
-    METRO_STATION = 1  # Стрешнево
+    METRO_STATION = 1
     PHONE = "89207000770"
     DATE = "29.08.2025"
-    RENTAL_PERIOD = 2  # Трое суток
+    RENTAL_PERIOD = 2
     COLOR = "black"
     COMMENT = "Хочу покататься!"
-    ORDER_NUMBER = "71295"
